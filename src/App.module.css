@@ -1,0 +1,58 @@
+.App {
+  width: 100%;
+  min-height: 100vh;
+
+  display: grid;
+}
+.container {
+  width: 80%;
+  height: auto;
+  justify-self: center;
+  align-self: center;
+  display: grid;
+}
+.container > h2 {
+  justify-self: center;
+}
+.checkbox {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  font-size: 2.5rem;
+}
+.checkbox > div {
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.checkbox > div:first-child {
+  color: green;
+}
+.checkbox > div:last-child {
+  color: red;
+}
+.checkbox > div:hover {
+  transform: scale(1.1);
+  text-shadow: 2px 2px 2px grey;
+  top: -3;
+}
+
+.displayGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-gap: 40px;
+  border: 2px solid green;
+  border-radius: 10px;
+  padding: 10px;
+  min-height: 424px;
+}
+.displayGrid > div {
+  display: grid;
+  justify-self: center;
+  align-self: center;
+  justify-content: center;
+  align-content: center;
+  width: 50%;
+}

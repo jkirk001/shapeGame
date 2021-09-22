@@ -1,70 +1,31 @@
-# Getting Started with Create React App
+# Notes for anyone reading
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The idea was to create the game board on page load.
 
-## Available Scripts
+imports arrays of shapes and colors
 
-In the project directory, you can run:
+builds shape array randomly and pushes into allshapes array
 
-### `yarn start`
+allshpaes array is then stored in state as 'dataset'
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Win condition is set next in the same useEffect
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+If the array contains one value 4 times, it is true -- else false
 
-### `yarn test`
+user can then see the 14 svgs displayed in the browser with the choice to select true or false.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+if there are 4 shapes of the same color and they choose true - they win. if there are not 4, and they choose false -- they win.
 
-### `yarn build`
+if there are 4 and they choose false -- they lose. If there are not 4 and they choose true -- they lose.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+When they select an option, true or false, a modal will open. If they chose the right win condition it will display "You win!" if not "You Lose!" with a button to reset the gameboard.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+This way the game can be played indefintely without reloading. SPAs are great for little games like this.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The modal is placed way higher than the underlying game, rendering everything under the modal unusable. On most pages, clicking off the modal would remove it, but I chose not to that here, forcing the user to select play again -- for simplicities sake. Its a game for kids.
 
-### `yarn eject`
+One last thing. I commented out some of the shapes and colors. There are too many for a 4x4 game (copying the display output in email). The win condition is almost never true. For the sake of this example I'm going to leave it commented so you can see a win and lose condition. Otherwise, we can comment them out.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+For clarity, I am going to make the outline and play again red on lose, green on win.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+And Memoized the top portion of the game, since on rerender it has no need to update and will never update.
